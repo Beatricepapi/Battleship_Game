@@ -83,3 +83,19 @@ def print_help():
     print("You have 10 turns to sink all enemy ships.")
     print("X = hit, - = miss")
     print("Good luck!\n")
+def main():
+    print_help()
+
+    # Player grid (for your ships)
+    player_grid = [['.'] * GRID_SIZE for _ in range(GRID_SIZE)]
+    player_grid = place_ships(player_grid)
+
+    # Enemy grid (hidden)
+    enemy_grid = [['.'] * GRID_SIZE for _ in range(GRID_SIZE)]
+    enemy_grid = place_ships(enemy_grid)
+
+    print("\nDEBUG: Enemy grid (for testing):")
+    print_grid(enemy_grid, fog_of_war=False)
+
+    ships_remaining = len(ships)
+    turns = 0
