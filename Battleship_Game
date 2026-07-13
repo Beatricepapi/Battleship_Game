@@ -62,3 +62,24 @@ def fire(row, col, grid):
         print("\n \U0001F30A You missed!")
         grid[row][col] = 'O'
         return False
+        
+def print_grid(grid, fog_of_war=True):
+    """Print the grid. Fog hides enemy ships."""
+    print('   ' + ' '.join(map(str, range(GRID_SIZE))))
+    for i, row in enumerate(grid):
+        if fog_of_war:
+            row_display = [
+                'X' if cell == 'X' else
+                'O' if cell == 'O' else
+                '.' for cell in row
+            ]
+        else:
+            row_display = row
+        print(f'{i:2} ' + ' '.join(row_display))
+
+def print_help():
+    print("\U0001F6A2 \U0001F6A2 \U0001F6A2  Welcome to Battleship! \U0001F6A2 \U0001F6A2 \U0001F6A2")
+    print("Enter row and column numbers (0–9) to fire at that square.")
+    print("You have 10 turns to sink all enemy ships.")
+    print("X = hit, - = miss")
+    print("Good luck!\n")
