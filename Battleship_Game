@@ -42,3 +42,23 @@ def place_ship(ship, size, grid):
                 grid[row][col + i] = ship[0]
         break
     return True
+def place_ships(grid):
+    """Place all ships on the grid."""
+    for ship, size in ships.items():
+        place_ship(ship, size, grid)
+    return grid
+
+def fire(row, col, grid):
+    """Handle firing at a cell and return the result."""
+    mark = grid[row][col]
+    if mark == 'X' or mark == 'O':
+        print("\nYou've already fired at this location. Try somewhere new!")
+        return None
+    elif mark != '.':
+        print(f"\n \U0001F4A5 Hit! {mark} ship segment destroyed.")
+        grid[row][col] = 'X'
+        return mark
+    else:
+        print("\n \U0001F30A You missed!")
+        grid[row][col] = 'O'
+        return False
