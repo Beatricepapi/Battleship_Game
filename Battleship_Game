@@ -124,4 +124,26 @@ def main():
             print("\nInvalid input. Please use numbers only.")
             continue
 
-  
+  hit_ship = fire(row, col, enemy_grid)
+
+        # If hit, check if the ship is fully destroyed
+        if hit_ship:
+            ship_name = [name for name, size in ships.items() if name[0] == hit_ship][0]
+            # Flatten grid to see if ship still exists
+            if hit_ship not in ''.join(''.join(r) for r in enemy_grid):
+                print(f"\n \U0001F525 You destroyed the enemy's {ship_name}!")
+                ships_remaining -= 1
+
+        # Display grids
+        print("\nYour Grid:")
+        print_grid(player_grid, fog_of_war=False)
+        print("\nEnemy Grid:")
+        print_grid(enemy_grid)
+
+    # End of game
+    if ships_remaining == 0:
+        print("\n \U0001F389 All enemy ships destroyed! You win!")
+    elif turns >= MAX_TURNS:
+        print("\n \U0001F480 Out of turns! Game over.")
+    else:
+        print("\n \U0001F44F Game ended.")
