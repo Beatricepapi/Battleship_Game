@@ -50,11 +50,11 @@ def fire(row, col, grid):
         print("\nYou've already fired at this location. Try somewhere new!")
         return None
     elif mark != '.':
-        print(f"\n💥 Hit! {mark} ship segment destroyed.")
+        print(f"\n\U0001F4A5 Hit! {mark} ship segment destroyed.")
         grid[row][col] = 'X'
         return mark
     else:
-        print("\n🌊 You missed!")
+        print("\n\U0001F30A You missed!")
         grid[row][col] = 'O'
         return False
 
@@ -72,7 +72,7 @@ def print_grid(grid, fog_of_war=True):
         print(f'{i:2} ' + ' '.join(row_display))
 
 def print_help():
-    print("🚢 🚢 🚢 Welcome to Battleship! 🚢 🚢 🚢")
+    print("\U0001F6A2 \U0001F6A2 \U0001F6A2 Welcome to Battleship! \U0001F6A2 \U0001F6A2 \U0001F6A2")
     print("Enter row and column numbers (0–9) to fire at that square.")
     print("You have 10 turns to sink all enemy ships.")
     print("X = hit, O = miss")
@@ -124,7 +124,7 @@ def main():
             ship_name = [name for name in ships if name[0] == hit_ship][0]
 
             if hit_ship not in ''.join(''.join(r) for r in enemy_grid):
-                print(f"\n🔥 You destroyed the enemy's {ship_name}!")
+                print(f"\n\U0001F525 You destroyed the enemy's {ship_name}!")
                 ships_remaining -= 1
 
         print("\nYour Grid:")
@@ -134,11 +134,11 @@ def main():
         print_grid(enemy_grid)
 
     if ships_remaining == 0:
-        print("\n🎉 All enemy ships destroyed! You win!")
+        print("\n\U0001F389 All enemy ships destroyed! You win!")
     elif turns >= MAX_TURNS:
-        print("\n💀 Out of turns! Game over.")
+        print("\n\U0001F480 Out of turns! Game over.")
     else:
-        print("\n👏 Game ended.")
+        print("\n\U0001F44F Game ended.")
 
 if __name__ == "__main__":
     main()
