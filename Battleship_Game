@@ -99,3 +99,29 @@ def main():
 
     ships_remaining = len(ships)
     turns = 0
+
+    while ships_remaining > 0 and turns < MAX_TURNS:
+        turns += 1
+        print(f"\n--- Turn {turns}/{MAX_TURNS} ---")
+        print("(Type 'quit' to exit the game)")
+
+        action = input("Enter row and column (e.g. '3 5'): ").strip()
+        if action.lower() == 'quit':
+            print("\nYou chose to quit the game.")
+            return
+
+        coordinates = action.split()
+        if len(coordinates) != 2:
+            print("\nInvalid input. Please enter two numbers (row col).")
+            continue
+
+        try:
+            row, col = map(int, coordinates)
+            if not (0 <= row < GRID_SIZE and 0 <= col < GRID_SIZE):
+                print("\nInvalid coordinates. Try again.")
+                continue
+        except ValueError:
+            print("\nInvalid input. Please use numbers only.")
+            continue
+
+  
