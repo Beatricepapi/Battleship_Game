@@ -32,3 +32,13 @@ def place_ship(ship, size, grid):
             # Place ship
             for i in range(size):
                 grid[row + i][col] = ship[0]
+                # Horizontal placement
+        else:
+            if col + size > GRID_SIZE:
+                continue
+            if any(grid[row][col + i] != '.' for i in range(size)):
+                continue
+            for i in range(size):
+                grid[row][col + i] = ship[0]
+        break
+    return True
