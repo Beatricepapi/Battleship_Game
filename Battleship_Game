@@ -147,3 +147,6 @@ def main():
         print("\n \U0001F480 Out of turns! Game over.")
     else:
         print("\n \U0001F44F Game ended.")
+        
+if __name__ == "__main__":
+    main()
